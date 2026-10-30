@@ -1,0 +1,84 @@
+CiArpeConnect 2.1 Beta - Installazione, prova gratuita e attivazione
+=====================================================================
+(English below)
+
+1. COSA SERVE
+- PC con Windows 10 o 11 a 64 bit. Consigliati 8 GB di RAM e 12 GB liberi su disco
+  (4,3 GB di download + circa 7 GB installati).
+- Un ricevitore SDRplay: RSPdx / RSPdx-R2 in collegamento diretto, oppure un
+  ricevitore usato tramite il programma SDRconnect di SDRplay (collegamento WebSocket).
+- Per il collegamento diretto: le API SDRplay 3.x installate (dal sito di SDRplay).
+- Facoltativo: un cavo audio virtuale (es. VB-CABLE) per mandare l'audio ad altri decoder.
+
+2. SCARICARE
+Pagina ufficiale: https://ciarpe2.github.io/CiArpeConnect-SDRconnect/
+File: https://github.com/ciarpe2/CiArpeConnect-SDRconnect/releases/tag/v2.1.0-beta (sezione Assets)
+Il programma di installazione e' composto da 4 file che devono stare NELLA STESSA CARTELLA:
+  CiArpeConnect_2.1.0_Beta_Setup.exe
+  CiArpeConnect_2.1.0_Beta_Setup-1.bin
+  CiArpeConnect_2.1.0_Beta_Setup-2.bin
+  CiArpeConnect_2.1.0_Beta_Setup-3.bin
+Se ne manca uno l'installazione si ferma chiedendo il "disco" successivo.
+Controllo facoltativo dell'integrita': i codici SHA-256 dei 4 file sono pubblicati nella
+pagina di download. In PowerShell:  Get-FileHash nomefile
+
+3. INSTALLARE (non servono permessi di amministratore)
+Fai doppio clic sul file .exe.
+Windows puo' mostrare la finestra blu "Windows ha protetto il PC" (Microsoft Defender
+SmartScreen) con "Editore: sconosciuto". Succede perche' il programma, distribuito da un
+piccolo sviluppatore indipendente, non ha una firma digitale a pagamento: non significa
+che contenga virus. Per proseguire:
+  a) clicca "Ulteriori informazioni";
+  b) controlla che il nome del file sia quello scaricato dalla pagina ufficiale;
+  c) clicca "Esegui comunque".
+Poi segui l'installazione. Il programma viene installato nella tua cartella utente
+(%LOCALAPPDATA%\Programs) e compare nel menu Start.
+Scarica sempre il programma solo dalla pagina ufficiale: non usare copie ricevute da altri.
+
+4. PRIMO AVVIO E PROVA GRATUITA
+Al primo avvio parte la prova gratuita di 14 giorni, con TUTTE le funzioni.
+Il titolo della finestra mostra i giorni che restano.
+Per iniziare: apri AUDIO ENGINE, scegli "RSPdx diretto" oppure "SDRconnect", seleziona
+l'ingresso d'antenna e premi AVVIA. Il pulsante INFO apre la guida completa.
+
+5. ACQUISTO E ATTIVAZIONE (licenza completa: 39 EUR)
+a) Nel programma premi ATTIVA (accanto a INFO) e poi "ACQUISTA CON PAYPAL",
+   oppure apri: https://www.paypal.com/paypalme/CiArpeConnect/39EUR
+b) Paga 39,00 EUR con PayPal.
+c) Riceverai il codice di attivazione all'indirizzo email del tuo conto PayPal,
+   di solito entro un giorno. Se usi un'altra email, scrivilo a ciarpeservizio@gmail.com.
+d) Premi ATTIVA, scrivi la stessa email e incolla il codice (copialo tutto).
+   Il programma si sblocca subito e per sempre; l'attivazione non richiede internet.
+Se la prova e' gia' scaduta, la finestra di attivazione compare da sola all'avvio.
+Il codice e' personale e legato alla tua email: conservalo, ti servira' se reinstalli
+il programma o cambi PC.
+
+6. DISINSTALLARE
+Impostazioni di Windows > App > App installate > CiArpeConnect > Disinstalla.
+
+7. ASSISTENZA
+ciarpeservizio@gmail.com - indica versione, Windows, ricevitore e cosa e' successo.
+
+8. AVVERTENZE
+Versione BETA: alcuni decoder sono sperimentali (elenco nella guida INFO). Il programma
+riceve soltanto; rispetta le leggi del tuo Paese sull'ascolto delle comunicazioni.
+SDRplay, SDRconnect e gli altri marchi citati appartengono ai rispettivi titolari;
+CiArpeConnect non e' un prodotto SDRplay. Componenti di terze parti e licenze: INFO,
+sezione 13, e cartella "notices" del programma.
+
+
+ENGLISH
+=======
+Requirements: Windows 10/11 64-bit, 8 GB RAM recommended, 12 GB free disk; an SDRplay
+receiver (RSPdx/RSPdx-R2 direct with SDRplay API 3.x, or any receiver through SDRplay's
+SDRconnect WebSocket link).
+Download: keep the 4 setup files (.exe and -1/-2/-3.bin) in the same folder.
+Install: double-click the .exe. Windows may show "Windows protected your PC" / "Unknown
+publisher" because the program has no paid code-signing certificate. Click "More info",
+check the file name, then "Run anyway". No administrator rights are needed.
+Trial: 14 days, all features.
+Buy (39 EUR): ACTIVATE > "BUY WITH PAYPAL" or https://www.paypal.com/paypalme/CiArpeConnect/39EUR.
+The activation code is sent to your PayPal email, usually within one day. Press ACTIVATE,
+enter the same email and paste the code; it works offline and never expires.
+Support: ciarpeservizio@gmail.com. BETA software; receive-only; trademarks belong to
+their owners; CiArpeConnect is not an SDRplay product.

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CiArpeConnect – ricezione e decodifica per SDRplay</title>
+<meta name="description" content="CiArpeConnect 2.1 Beta: ricezione, waterfall, decoder digitali e traduzione offline per ricevitori SDRplay. Prova gratuita 14 giorni, licenza 39 EUR.">
+<link rel="icon" href="favicon.png">
+<style>
+  /* Pagina statica autonoma: nessuno script o servizio esterno. */
+  :root {
+    --navy: #0b1d33; --navy2: #12355c; --panel: #13283f; --line: #24476d;
+    --text: #e6eef8; --muted: #a9bdd4; --cyan: #5bd0ff; --yellow: #ffd228; --red: #ff4d5e;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--navy); color: var(--text);
+         font: 16px/1.6 "Segoe UI", system-ui, -apple-system, sans-serif; }
+  a { color: var(--cyan); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+  header { background: linear-gradient(180deg, var(--navy2), var(--navy)); padding: 48px 0 32px; }
+  .hero { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+  .hero img { width: 128px; height: 128px; }
+  h1 { font-size: 2.3rem; margin: 0; line-height: 1.15; }
+  h1 small { display: block; font-size: 1rem; color: var(--muted); font-weight: 400; margin-top: 6px; }
+  h2 { font-size: 1.5rem; margin: 44px 0 14px; color: var(--yellow); }
+  .lead { font-size: 1.15rem; color: var(--muted); max-width: 640px; }
+  .buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+  .btn { display: inline-block; padding: 13px 22px; border-radius: 10px; font-weight: 700;
+         text-decoration: none; border: 2px solid var(--cyan); }
+  .btn.buy { background: var(--yellow); color: #1b1b1b; border-color: var(--yellow); }
+  .btn.try { color: var(--cyan); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .card h3 { margin: 0 0 6px; font-size: 1.05rem; color: var(--cyan); }
+  .card p, .card ul { margin: 0; color: var(--muted); }
+  ul { padding-left: 20px; }
+  .tags span { display: inline-block; margin: 3px 4px 3px 0; padding: 2px 10px; border-radius: 99px;
+               background: #0e3a2a; border: 1px solid #2f8a5c; font-size: .9rem; }
+  .tags.exp span { background: #3a300e; border-color: #8a742f; }
+  ol.steps { counter-reset: s; list-style: none; padding: 0; }
+  ol.steps li { counter-increment: s; position: relative; padding: 0 0 14px 46px; }
+  ol.steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 32px; height: 32px;
+                        border-radius: 50%; background: var(--cyan); color: var(--navy); font-weight: 800;
+                        display: flex; align-items: center; justify-content: center; }
+  .notice { border-left: 4px solid var(--yellow); background: var(--panel); padding: 14px 18px; border-radius: 0 10px 10px 0; }
+  .price { font-size: 2.4rem; font-weight: 800; color: var(--yellow); }
+  .todo { background: #fff3a0; color: #3a3000; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
+  code { background: #0a1626; padding: 1px 6px; border-radius: 4px; }
+  footer { margin-top: 56px; padding: 26px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  @media (max-width: 600px) { h1 { font-size: 1.8rem; } .hero img { width: 88px; height: 88px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap hero">
+    <img src="icona.png" alt="Icona CiArpeConnect">
+    <div>
+      <h1>CiArpeConnect 2.1 Beta<small>Ricezione, waterfall, decoder digitali e traduzione offline per ricevitori SDRplay</small></h1>
+      <p class="lead">Un unico programma per sintonizzare, ascoltare, riconoscere e decodificare i segnali HF – dalle utility ai radioamatori – con traduzione in italiano che funziona senza internet.</p>
+      <div class="buttons">
+        <a class="btn try" href="#download">Prova gratis 14 giorni</a>
+        <a class="btn buy" href="https://www.paypal.com/paypalme/CiArpeConnect/39EUR" rel="noopener">Acquista – 39 € con PayPal</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2>Cosa fa</h2>
+  <div class="grid">
+    <div class="card"><h3>Due modi di ricevere</h3><p>RSPdx / RSPdx-R2 in collegamento diretto (API SDRplay) oppure qualsiasi ricevitore gestito da SDRconnect tramite WebSocket.</p></div>
+    <div class="card"><h3>Spettro e waterfall</h3><p>Sintonia con clic, zoom, velocità regolabile, scanner di banda con soglia SNR, registrazione audio e brevi catture IQ.</p></div>
+    <div class="card"><h3>Database frequenze</h3><p>EiBi, AOKI, HFCC e log utility: mostra cosa è in onda all'ora UTC attuale e il modo consigliato.</p></div>
+    <div class="card"><h3>Decoder Lab</h3><p>Riconoscimento del segnale e decoder integrati per i principali modi digitali (vedi elenco qui sotto).</p></div>
+    <div class="card"><h3>Traduzione offline</h3><p>Messaggi decodificati e parlato tradotti in italiano con modelli locali: nessun dato inviato a servizi esterni.</p></div>
+    <div class="card"><h3>Ascolto pulito</h3><p>Riduzione del rumore (anche con IA), notch, filtri e controlli di tono; previsione di propagazione HF.</p></div>
+  </div>
+
+  <h2>Decoder</h2>
+  <p>Provati dall'autore su segnali reali:</p>
+  <div class="tags"><span>CW</span><span>RTTY</span><span>SITOR-B / NAVTEX</span><span>METEOFAX (WEFAX)</span><span>SSTV</span><span>FT4 / FT8</span><span>HFDL</span><span>STANAG 4285</span><span>ALE 2G</span><span>DSC</span><span>DRM</span><span>JS8</span><span>PSK31</span><span>WSPR</span></div>
+  <p style="margin-top:14px">Sperimentali (inclusi, ma non ancora confermati in ricezione reale):</p>
+  <div class="tags exp"><span>PSK63</span><span>Olivia</span><span>MFSK16 / MFSK32</span><span>ARQ-E / E3</span></div>
+
+  <h2>Requisiti</h2>
+  <ul>
+    <li>Windows 10 o 11 a 64 bit, consigliati 8 GB di RAM e 12 GB liberi su disco.</li>
+    <li>Ricevitore SDRplay: RSPdx / RSPdx-R2 (diretto, con API SDRplay 3.x) oppure tramite SDRconnect.</li>
+    <li>Facoltativo: cavo audio virtuale (VB-CABLE) per decoder esterni.</li>
+  </ul>
+
+  <h2 id="download">Prova gratuita</h2>
+  <p>14 giorni con tutte le funzioni, senza registrazione. Il setup è di circa 4,3 GB, diviso in 4 file da tenere nella stessa cartella.</p>
+  <p><a class="btn try" href="https://github.com/ciarpe2/CiArpeConnect-SDRconnect/releases/tag/v2.1.0-beta">Scarica i 4 file da GitHub</a></p>
+  <p>Nella pagina di GitHub scarica, nella sezione <b>Assets</b>, tutti e quattro i file <code>CiArpeConnect_2.1.0_Beta_Setup</code> (.exe e -1/-2/-3.bin), mettili nella stessa cartella e avvia il .exe.</p>
+  <p>Codici SHA-256 per controllare i file scaricati (facoltativo):</p>
+  <ul>
+      <li><code>CiArpeConnect_2.1.0_Beta_Setup-1.bin</code><br><code style="font-size:.8rem;word-break:break-all">516c7b5de442755281a1e8773da4e2ec56ddc7c8a3963879baa65bdb2fa274b3</code></li>
+      <li><code>CiArpeConnect_2.1.0_Beta_Setup-2.bin</code><br><code style="font-size:.8rem;word-break:break-all">21e4206d3b80769c033ebb52a919c4aa758b29d8a4d54c2391b0431771cb71a4</code></li>
+      <li><code>CiArpeConnect_2.1.0_Beta_Setup-3.bin</code><br><code style="font-size:.8rem;word-break:break-all">be03be5825fb5f513fdfc70d05870d78a6b20378e0f7727b6c2443ded438a904</code></li>
+      <li><code>CiArpeConnect_2.1.0_Beta_Setup.exe</code><br><code style="font-size:.8rem;word-break:break-all">7b80c29f4da00cc5a2ef4a10c204f4257b83aa9cdf57f0fb5c6c2ce641dc82ff</code></li>
+  </ul>
+
+  <h2>Licenza completa</h2>
+  <p class="price">39 €</p>
+  <ol class="steps">
+    <li>Paga con PayPal dal pulsante qui sopra, oppure dal pulsante <b>ATTIVA → ACQUISTA CON PAYPAL</b> dentro il programma.</li>
+    <li>Ricevi il <b>codice di attivazione</b> all'email del tuo conto PayPal, di solito entro un giorno.</li>
+    <li>Nel programma premi <b>ATTIVA</b>, scrivi la stessa email e incolla il codice.</li>
+    <li>Fatto: il programma è sbloccato per sempre. L'attivazione funziona anche senza internet.</li>
+  </ol>
+  <p>Rimborso entro 14 giorni dal pagamento, senza motivazione. <a href="condizioni.html">Condizioni di vendita e privacy</a>.</p>
+
+  <h2>Installazione e avviso di Windows</h2>
+  <div class="notice">
+    <p>Al primo avvio del setup Windows può mostrare la schermata blu <b>"Windows ha protetto il PC"</b> con <b>"Editore: sconosciuto"</b>.
+    Succede perché CiArpeConnect è distribuito da uno sviluppatore indipendente senza firma digitale a pagamento: non indica un virus.</p>
+    <ol>
+      <li>Clicca <b>Ulteriori informazioni</b>.</li>
+      <li>Controlla che il nome del file sia <code>CiArpeConnect_2.1.0_Beta_Setup.exe</code> scaricato da questa pagina.</li>
+      <li>Clicca <b>Esegui comunque</b> e segui l'installazione (non servono permessi di amministratore).</li>
+    </ol>
+  </div>
+  <p>Scarica il programma solo da questa pagina. Istruzioni complete: <a href="ISTRUZIONI_ACQUIRENTE.txt">ISTRUZIONI_ACQUIRENTE.txt</a>.</p>
+
+  <h2>Domande frequenti</h2>
+  <div class="grid">
+    <div class="card"><h3>Serve internet?</h3><p>No per ricevere, decodificare, tradurre e attivare. Internet serve solo per aggiornare il database frequenze e la propagazione.</p></div>
+    <div class="card"><h3>Cambio PC?</h3><p>Reinstalla il programma e inserisci di nuovo la tua email e il tuo codice: conservali.</p></div>
+    <div class="card"><h3>È una versione beta?</h3><p>Sì. Le funzioni principali sono provate, alcuni decoder sono ancora sperimentali e lo diciamo chiaramente.</p></div>
+    <div class="card"><h3>Trasmette?</h3><p>No: CiArpeConnect riceve soltanto. Rispetta le leggi del tuo Paese sull'ascolto.</p></div>
+  </div>
+
+  <h2 lang="en">In English</h2>
+  <p lang="en">CiArpeConnect 2.1 Beta is a Windows receiver, decoder and offline translator for SDRplay radios (RSPdx direct or via SDRconnect).
+  Free 14-day trial with all features; full licence 39 EUR via PayPal – the activation code is emailed to your PayPal address, usually within one day.
+  Windows may show "Unknown publisher": click <i>More info</i> → <i>Run anyway</i>. Support: <a href="mailto:ciarpeservizio@gmail.com">ciarpeservizio@gmail.com</a>.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>CiArpeConnect – @CiArpe – <a href="mailto:ciarpeservizio@gmail.com">ciarpeservizio@gmail.com</a> – <a href="condizioni.html">Condizioni di vendita e privacy</a></p>
+    <p>Software in versione beta, fornito senza garanzie oltre quanto previsto dalla legge. SDRplay, SDRconnect e gli altri marchi citati appartengono ai rispettivi titolari; CiArpeConnect non è un prodotto SDRplay né è affiliato a SDRplay Ltd.
+    Componenti di terze parti (fldigi, WSJT-X, JS8Call, FFmpeg LGPL, OPUS-MT, Argos Translate, Whisper, Parakeet e altri) sono elencati con le rispettive licenze nel pulsante INFO del programma e nella cartella <code>notices</code>.</p>
+  </div>
+</footer>
+</body>
+</html>
